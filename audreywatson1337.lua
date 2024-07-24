@@ -50,8 +50,8 @@ getgenv().Script = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- 10%
 		},
-		['Prediction'] = 0.129,
-		['Draw Hit'] = true, 
+		['Prediction'] = 0.145,
+		['Draw Hit'] = false, 
 		['Auto Prediction'] = false,
 		['Prediction Adjustment'] = 1,
 		['Hit Location'] = {
@@ -83,9 +83,9 @@ getgenv().Script = {
 	['Aiming'] = {
 		['Enabled'] = true,
 		['Radius'] = 100,
-		['Stutter'] = 1,
+		['Stutter'] = 5,
 		['Stickiness'] = 1,
-		['Prediction'] = 0,
+		['Prediction'] = 0.135,
 		['Readjustment'] = false,
 		['Legacy Smoothing'] = true, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
@@ -118,9 +118,9 @@ getgenv().Script = {
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 3.7,
+			['Smoothing'] = 1000,
 			['Easing'] = {
-				['Style'] = 'Linear',
+				['Style'] = 'Custom',
 				['Formula'] = function(d, s)
 					return(d / s^s) - tick()
 				end,
@@ -156,7 +156,7 @@ getgenv().Script = {
 	['Helpers'] = {
 		['DisableYAxis'] = false,
 		['Bullet Curvation'] = {	
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Formula'] = '3D', --[[ 3D, 2D ]]--
 			['2D'] = {
 				['X'] = 300,
@@ -168,7 +168,7 @@ getgenv().Script = {
 			['Logger'] = true --[[ Print information ]]--
 		},
 		['Location Assist'] = {
-			['Visible'] = true,
+			['Visible'] = false,
 			['Thickness'] = 1,
 			['Color'] = Color3.fromRGB(199, 166, 163),
 			['Unsafe Color'] = Color3.fromRGB(255, 0, 0),
@@ -178,7 +178,7 @@ getgenv().Script = {
 				['X'] = workspace.CurrentCamera.ViewportSize.X / 2 - 5,
 				['Y'] = workspace.CurrentCamera.ViewportSize.Y / 2 - 300
 			},
-			['Min Scan'] = 0,
+			['Min Scan'] = 5,
 			['Max Scan Radius'] = 50
 		}
 	},
@@ -208,7 +208,7 @@ getgenv().Script = {
 			},
 		},
 		['Panel'] = {
-			['Visible'] = true, --[[ Information helper / panel ]]--
+			['Visible'] = false, --[[ Information helper / panel ]]--
 			['Thickness'] = 1,
 			['Color'] = Color3.fromRGB(255, 255, 255),
 			['Transparency'] = 0.7,
@@ -219,7 +219,7 @@ getgenv().Script = {
 			}
 		},
 		['Tracer'] = {
-			['Visible'] = true,
+			['Visible'] = false,
 			['Thickness'] = 1,
 			['Color'] = Color3.fromRGB(255, 255, 255),
 			['Transparency'] = 0.7,
@@ -227,14 +227,14 @@ getgenv().Script = {
 		['Visualization'] = {
 			['Silent'] = {
 				['BoxFOV'] = {
-					['Visible'] = true,
+					['Visible'] = false,
 					['Thickness'] = 1,
 					['TargetColor'] = Color3.fromRGB(255, 0, 0),
 					['Transparency'] = 1,
 				},
 				['CircleFOV'] = {
-					['Visible'] = false,
-					['Filled'] = false,
+					['Visible'] = true,
+					['Filled'] = true,
 					['Transparency'] = 0.4,
 					['Color'] = Color3.fromRGB(221, 130, 240),
 				},
@@ -292,7 +292,7 @@ getgenv().Script = {
 	['FOVs'] = {
 		['Silent'] = {
 			['BoxFOV'] = {
-				['Bind To Silent'] = true, --[[ Make your box move with your silent ]]--
+				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--
 				['Height'] = 2,
 				['Width'] = 1,
 			},

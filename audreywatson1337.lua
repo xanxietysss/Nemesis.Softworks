@@ -9,7 +9,7 @@ getgenv().Script = {
 			},
 			['Soft Panic'] = {
 				['Enabled'] = false,
-				['Disables'] = {'Aimbot', 'Visuals', 'Silent Aim'}
+				['Disables'] = {'Visuals'}
 			},
 		}
 	},
@@ -38,19 +38,19 @@ getgenv().Script = {
 		['100-110'] = 0.139,
 		['110-120'] = 0.144,
 		['120-130'] = 0.149,
-		['130-140'] = 0.154,
-		['140-150'] = 0.155,
+		['130-140'] = 0.1274,
+		['140-150'] = 0.1575,
 	},
 	['Silent'] = {
 		['Enabled'] = true,
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
-		['HitScan'] = 'On Shot', --[[ On Shot / Automatic ]]--
+		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
 		['HitChance'] = {
-			['HitChance'] = 80,
-			['Miss Chance'] = 0.1, -- 10%
+			['HitChance'] = 100,
+			['Miss Chance'] = 0, -- 10%
 		},
-		['Prediction'] = 0.135,
+		['Prediction'] = 0.129,
 		['Draw Hit'] = true, 
 		['Auto Prediction'] = false,
 		['Prediction Adjustment'] = 1,
@@ -61,22 +61,22 @@ getgenv().Script = {
 		['Prediction Points'] = { --[[ Will set your prediction depending on the part your aiming nearest to ]]--
 			['Enabled'] = false,
 			['Hit Points'] = {
-				['Head'] = 0.15,
-				['UpperTorso'] = 0.15,
-				['LowerTorso'] = 0.15,
-				['HumanoidRootPart'] = 0.15,
-				['LeftUpperArm'] = 0.15,
-				['LeftLowerArm'] = 0.15,
-				['LeftHand'] = 0.15,
-				['RightUpperArm'] = 0.15,
-				['RightLowerArm'] = 0.15,
-				['RightHand'] = 0.15,
-				['LeftUpperLeg'] = 0.15,
-				['LeftLowerLeg'] = 0.15,
-				['LeftFoot'] = 0.15,
-				['RightUpperLeg'] = 0.15,
-				['RightLowerLeg'] = 0.15,
-				['RightFoot'] = 0.15,
+				['Head'] = 0.011,
+				['UpperTorso'] = 0.135,
+				['LowerTorso'] = 0.127,
+				['HumanoidRootPart'] = 0.127,
+				['LeftUpperArm'] = 0.127,
+				['LeftLowerArm'] = 0.127,
+				['LeftHand'] = 0.127,
+				['RightUpperArm'] = 0.127,
+				['RightLowerArm'] = 0.127,
+				['RightHand'] = 0.127,
+				['LeftUpperLeg'] = 0.127,
+				['LeftLowerLeg'] = 0.127,
+				['LeftFoot'] = 0.127,
+				['RightUpperLeg'] = 0.127,
+				['RightLowerLeg'] = 0.127,
+				['RightFoot'] = 0.127,
 			}			
 		},
 	},
@@ -89,7 +89,7 @@ getgenv().Script = {
 		['Readjustment'] = false,
 		['Legacy Smoothing'] = true, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
-			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['Hit Target'] = 'Center Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
 			['R15'] = {'Head'}
 		},
 		['HitChance'] = {
@@ -99,26 +99,26 @@ getgenv().Script = {
 		['Prediction Points'] = { --[[ Will set your prediction depending on the part your aiming nearest to ]]--
 			['Enabled'] = false,
 			['Hit Points'] = {
-				['Head'] = 0.06,
-				['UpperTorso'] = 0.15,
-				['LowerTorso'] = 0.15,
-				['HumanoidRootPart'] = 0.15,
-				['LeftUpperArm'] = 0.15,
-				['LeftLowerArm'] = 0.15,
-				['LeftHand'] = 0.15,
-				['RightUpperArm'] = 0.15,
-				['RightLowerArm'] = 0.15,
-				['RightHand'] = 0.15,
-				['LeftUpperLeg'] = 0.15,
-				['LeftLowerLeg'] = 0.15,
-				['LeftFoot'] = 0.15,
-				['RightUpperLeg'] = 0.15,
-				['RightLowerLeg'] = 0.15,
-				['RightFoot'] = 0.15,
+				['Head'] = 0.127,
+				['UpperTorso'] = 0.06,
+				['LowerTorso'] = 0.06,
+				['HumanoidRootPart'] = 0.127,
+				['LeftUpperArm'] = 0.06,
+				['LeftLowerArm'] = 0.06,
+				['LeftHand'] = 0.06,
+				['RightUpperArm'] = 0.06,
+				['RightLowerArm'] = 0.06,
+				['RightHand'] = 0.06,
+				['LeftUpperLeg'] = 0.06,
+				['LeftLowerLeg'] = 0.06,
+				['LeftFoot'] = 0.06,
+				['RightUpperLeg'] = 0.06,
+				['RightLowerLeg'] = 0.06,
+				['RightFoot'] = 0.06,
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 1000,
+			['Smoothing'] = 3.7,
 			['Easing'] = {
 				['Style'] = 'Linear',
 				['Formula'] = function(d, s)
@@ -136,25 +136,27 @@ getgenv().Script = {
 			['Third Person'] = false,
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
+			['Behind Wall'] = true,
+			['Visible'] = true,
 		},
 	},
 	['Triggerbot'] = {
 		['Enabled'] = true,
 		['Interval'] = 1,
-		['Cooldown 1'] = 0.06,
+		['Cooldown 1'] = 0.1275,
 		['Cooldown 2'] = 0.12,
 		['Prediction'] = 0.06,
 		['FOVType'] = 'CircleFOV',
 		['Activation'] = {
-			['Mode'] = 'Keybind', --[[ Mouse / Keybind ]]--
+			['Mode'] = 'Mouse', --[[ Mouse / Keybind ]]--
 			['Type'] = 'Hold', --[[ Toggle / Hold ]]--
 		},
 		['Silent Link'] = false, --[[ Adjusts the triggerbot depending on Silent Aim ]]--
 	},
 	['Helpers'] = {
 		['DisableYAxis'] = false,
-		['Bullet Curvation'] = {
-			['Enabled'] = false,
+		['Bullet Curvation'] = {	
+			['Enabled'] = true,
 			['Formula'] = '3D', --[[ 3D, 2D ]]--
 			['2D'] = {
 				['X'] = 300,
@@ -163,12 +165,12 @@ getgenv().Script = {
 			['3D'] = {
 				['Angle'] = 4.6,
 			},
-			['Logger'] = false --[[ Print information ]]--
+			['Logger'] = true --[[ Print information ]]--
 		},
 		['Location Assist'] = {
 			['Visible'] = true,
 			['Thickness'] = 1,
-			['Color'] = Color3.fromRGB(80, 255, 64),
+			['Color'] = Color3.fromRGB(199, 166, 163),
 			['Unsafe Color'] = Color3.fromRGB(255, 0, 0),
 			['Transparency'] = 1,
 			['Center'] = false,
@@ -176,7 +178,7 @@ getgenv().Script = {
 				['X'] = workspace.CurrentCamera.ViewportSize.X / 2 - 5,
 				['Y'] = workspace.CurrentCamera.ViewportSize.Y / 2 - 300
 			},
-			['Min Scan'] = 5,
+			['Min Scan'] = 0,
 			['Max Scan Radius'] = 50
 		}
 	},
@@ -261,7 +263,7 @@ getgenv().Script = {
 			['Type'] = 'Prediction Disabler', --[[ Sides, Prediction Disabler ]]--
 		},	
 		['Macro'] = {
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Gun Macro'] = {
 				['Mode'] = 'Hold',
 				['Type'] = 'ThirdPerson', --[[ ThirdPerson, FirstPerson ]]--
@@ -290,7 +292,7 @@ getgenv().Script = {
 	['FOVs'] = {
 		['Silent'] = {
 			['BoxFOV'] = {
-				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--
+				['Bind To Silent'] = true, --[[ Make your box move with your silent ]]--
 				['Height'] = 2,
 				['Width'] = 1,
 			},

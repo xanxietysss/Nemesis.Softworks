@@ -8,19 +8,19 @@ getgenv().Script = {
 				['Enabled'] = false,
 			},
 			['Soft Panic'] = {
-				['Enabled'] = false,
-				['Disables'] = {'Visuals'}
+				['Enabled'] = true,
+				['Disables'] = {'Visuals'} --[[ Visuals, Aimbot, Silent Aim ]]
 			},
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'C',
-		['Unlock'] = 'Z',
+		['LockOn'] = 'F',
+		['Unlock'] = 'Z', --[[ Only works with double bind ]]
 		['AimAssist Toggle'] = 'B',
 		['Silent Toggle'] = 'P',
-		['Triggerbot'] = 'MouseButton2',
+		['Triggerbot'] = 'Q',
 		['AntiLock'] = 'Y',
-		['SpecificESP'] = 'T',
+		['Specific ESP'] = 'T',
 		['Macro'] = 'X',
 		['NoClip'] = '-',
 		['InventorySorter'] = 'H',
@@ -50,13 +50,13 @@ getgenv().Script = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- 10%
 		},
-		['Prediction'] = 0.145,
-		['Draw Hit'] = false, 
+		['Prediction'] = 0.125,
+		['Draw Hit'] = true, 
 		['Auto Prediction'] = false,
 		['Prediction Adjustment'] = 1,
 		['Hit Location'] = {
-			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
-			['R15'] = {'Head'}
+			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['R15'] = {'HumanoidRootPart'}
 		},
 		['Prediction Points'] = { --[[ Will set your prediction depending on the part your aiming nearest to ]]--
 			['Enabled'] = false,
@@ -82,14 +82,15 @@ getgenv().Script = {
 	},
 	['Aiming'] = {
 		['Enabled'] = true,
+		['Double Bind'] = false,
 		['Radius'] = 100,
-		['Stutter'] = 5,
+		['Stutter'] = 0,
 		['Stickiness'] = 1,
 		['Prediction'] = 0.135,
 		['Readjustment'] = false,
 		['Legacy Smoothing'] = true, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
-			['Hit Target'] = 'Center Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
 			['R15'] = {'Head'}
 		},
 		['HitChance'] = {
@@ -118,9 +119,9 @@ getgenv().Script = {
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 1000,
+			['Smoothing'] = 50,
 			['Easing'] = {
-				['Style'] = 'Custom',
+				['Style'] = 'Linear',
 				['Formula'] = function(d, s)
 					return(d / s^s) - tick()
 				end,
@@ -136,27 +137,28 @@ getgenv().Script = {
 			['Third Person'] = false,
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
-			['Behind Wall'] = true,
-			['Visible'] = true,
+			['Wall Check'] = false,
+			['Visible'] = false,
 		},
 	},
 	['Triggerbot'] = {
-		['Enabled'] = true,
+		['Enabled'] = false,
 		['Interval'] = 1,
+		['Tolerance'] = 0.5,
 		['Cooldown 1'] = 0.1275,
 		['Cooldown 2'] = 0.12,
 		['Prediction'] = 0.06,
 		['FOVType'] = 'CircleFOV',
 		['Activation'] = {
-			['Mode'] = 'Mouse', --[[ Mouse / Keybind ]]--
-			['Type'] = 'Hold', --[[ Toggle / Hold ]]--
+			['Mode'] = 'Keybind', --[[ Mouse / Keybind ]]--
+			['Type'] = 'Toggle', --[[ Toggle / Hold ]]--
 		},
 		['Silent Link'] = false, --[[ Adjusts the triggerbot depending on Silent Aim ]]--
 	},
 	['Helpers'] = {
 		['DisableYAxis'] = false,
 		['Bullet Curvation'] = {	
-			['Enabled'] = false,
+			['Enabled'] = true,
 			['Formula'] = '3D', --[[ 3D, 2D ]]--
 			['2D'] = {
 				['X'] = 300,
@@ -178,14 +180,67 @@ getgenv().Script = {
 				['X'] = workspace.CurrentCamera.ViewportSize.X / 2 - 5,
 				['Y'] = workspace.CurrentCamera.ViewportSize.Y / 2 - 300
 			},
-			['Min Scan'] = 5,
-			['Max Scan Radius'] = 50
+			['Min Scan'] = 3,
+			['Max Scan Radius'] = 150
 		}
 	},
 	['Visuals'] = {
 		['Load Check'] = false, --[[ Hide visuals on start ]]--
-		['SpecificESP'] = {
-			['Visible'] = true,
+		['Global ESP'] = {
+			['Enabled'] = true,
+			['Team Check'] = true,
+			['Max Draw Distance'] = math.huge,
+			['Text Size'] = 10,
+			['Fade Effect'] = {
+				['On Distance'] = true,
+			},
+			['Drawing'] = {
+				['Names'] = {
+					['Enabled'] = true,
+					['Color'] = Color3.fromRGB(180, 207, 227),
+				},
+				['Distance'] = {
+					['Enabled'] = true, 
+					['Docked'] = false,
+					['Color'] = Color3.fromRGB(180, 207, 227),
+				},
+				['Health'] = {
+					['Enabled'] = true,  
+					['Text'] = true, 
+					['Health Based'] = true, 
+					['Text Color'] = Color3.fromRGB(239, 193, 193), 
+					['Width'] = 2.5,
+					['Gradient'] = true, 
+					['Alpha Color'] = Color3.fromRGB(239, 193, 193), 
+					['Depth Color'] = Color3.fromRGB(239, 193, 193), 
+					['Color Keypoint'] = Color3.fromRGB(202, 219, 247), 
+				},
+				['Boxes'] = {
+					['Enabled'] = true,
+					['Box Type'] = 'Bounding Box', -- Corner, Bounding Box
+					['Bounding Box'] = {
+						['Animate'] = true,
+						['Animate Speed'] = 50,
+						['Gradient'] = true, 
+						['Alpha Color'] = Color3.fromRGB(239, 193, 193), 
+						['Depth Color'] = Color3.fromRGB(239, 193, 193), 
+						['Filled Color Scheme'] = true, 
+						['Fill Color'] = Color3.fromRGB(202, 219, 247), 
+						['Fill Glow'] = Color3.fromRGB(239, 193, 193),
+						['Filled'] = {
+							['Enabled'] = true,
+							['Transparency'] = 0.50,
+							['Color'] = Color3.fromRGB(239, 193, 193), 
+						},
+					},
+					['Corner'] = {
+						['Color'] = Color3.fromRGB(226, 181, 181),
+					},
+				},
+			},
+		},
+		['Specific ESP'] = {
+			['Visible'] = false,
 			['EnemyColor'] = Color3.fromRGB(202, 219, 247),
 			['AllyColor'] = Color3.fromRGB(32, 209, 29),
 			['Thickness'] = 1,
@@ -224,12 +279,50 @@ getgenv().Script = {
 			['Color'] = Color3.fromRGB(255, 255, 255),
 			['Transparency'] = 0.7,
 		},
+		['Crosshair'] = {
+			['Visible'] = true,
+			['Stutter'] = 0,
+			['Docked'] = false,
+			['Width'] = 1.5,
+			['Length'] = 15,
+			['Radius'] = 5,
+			['Color'] = Color3.fromRGB(180, 207, 227),
+			['Rotate'] = true, 
+			['Rotate Speed'] = 150,
+			['Max Angle'] = 360,
+			['Lerp Style'] = Enum.EasingStyle.Linear,
+			['Fluctuate'] = false,
+			['Fluctuate Speed'] = 150,
+			['Fluctuate Min'] = 5,
+			['Fluctuate Max'] = 22,
+			['Labels'] = {
+				['Name'] = {
+					['Visible'] = true, 
+					['Text'] = 'nemesis',
+					['Color'] =  Color3.fromRGB(180, 207, 227)
+				},
+				['Extension'] = { 
+					['Visible'] = true,
+					['Text'] = '.soft',
+					['Color'] = Color3.fromRGB(180, 207, 227)
+				},
+				['Current Target'] = {
+					['Visible'] = true,
+					['Color'] = Color3.fromRGB(255, 255, 255),
+				},
+				['Current Target Health'] = {
+					['Visible'] = true,
+					['Color'] = Color3.fromRGB(165, 255, 191),
+				}
+			}
+		},
 		['Visualization'] = {
 			['Silent'] = {
 				['BoxFOV'] = {
 					['Visible'] = false,
 					['Thickness'] = 1,
 					['TargetColor'] = Color3.fromRGB(255, 0, 0),
+					['Color'] = Color3.fromRGB(180, 207, 227),
 					['Transparency'] = 1,
 				},
 				['CircleFOV'] = {
@@ -256,7 +349,7 @@ getgenv().Script = {
 		},
 	},
 	['Misc'] = {
-		['RemoveSeats'] = true,
+		['RemoveSeats'] = false,
 		['AntiFling'] = false,
 		['AntiLock'] = {
 			['Enabled'] = false,
@@ -275,7 +368,7 @@ getgenv().Script = {
 			}
 		},
 		['InventorySorter'] = {
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Priorities'] = { -- [[ Case Sensitive ]]--
 				'[Double-Barrel SG]', 
                 '[Revolver]', 
@@ -294,10 +387,10 @@ getgenv().Script = {
 			['BoxFOV'] = {
 				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--
 				['Height'] = 2,
-				['Width'] = 1,
+				['Width'] = 1.2,
 			},
 			['CircleFOV'] = { --[[ Short, Medium, Long ]]--
-				['Revolver'] = { 32, 32, 32 },
+				['Revolver'] = { 100, 100, 100 },
 				['DoubleBarrel'] = { 75, 75, 75 },
 				['Shotgun'] = { 75, 75, 75 },
 				['TacticalShotgun'] = { 75, 75, 75 },

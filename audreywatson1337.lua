@@ -11,6 +11,10 @@ getgenv().Script = {
 				['Enabled'] = true,
 				['Disables'] = {'Visuals'} --[[ Visuals, Aimbot, Silent Aim ]]
 			},
+		},
+		['Script Logic'] = {
+			['FFA Mode'] = true, --[[ Keep on for hood games ]]
+			['Global Wall Check'] = true --[[ Checks if a player is behind a wall before locking on ]]
 		}
 	},
 	['Binds'] = {

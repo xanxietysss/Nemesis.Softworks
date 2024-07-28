@@ -8,8 +8,8 @@ getgenv().Script = {
 				['Enabled'] = false,
 			},
 			['Soft Panic'] = {
-				['Enabled'] = true,
-				['Disables'] = {'Visuals'} --[[ Visuals, Aimbot, Silent Aim ]]
+				['Enabled'] = false,
+				['Disables'] = {'Visuals'}
 			},
 		},
 		['Script Logic'] = {
@@ -18,7 +18,7 @@ getgenv().Script = {
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'F',
+		['LockOn'] = 'T',
 		['Unlock'] = 'Z', --[[ Only works with double bind ]]
 		['AimAssist Toggle'] = 'B',
 		['Silent Toggle'] = 'P',
@@ -54,13 +54,13 @@ getgenv().Script = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- 10%
 		},
-		['Prediction'] = 0.125,
+		['Prediction'] = 0.129,
 		['Draw Hit'] = true, 
 		['Auto Prediction'] = false,
 		['Prediction Adjustment'] = 1,
 		['Hit Location'] = {
-			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
-			['R15'] = {'HumanoidRootPart'}
+			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['R15'] = {'Head'}
 		},
 		['Prediction Points'] = { --[[ Will set your prediction depending on the part your aiming nearest to ]]--
 			['Enabled'] = false,
@@ -86,9 +86,10 @@ getgenv().Script = {
 	},
 	['Aiming'] = {
 		['Enabled'] = true,
+		['Mode'] = 'Target', --[[ Target / Regular ]]--
 		['Double Bind'] = false,
 		['Radius'] = 100,
-		['Stutter'] = 0,
+		['Stutter'] = 1,
 		['Stickiness'] = 1,
 		['Prediction'] = 0.135,
 		['Readjustment'] = false,
@@ -123,7 +124,7 @@ getgenv().Script = {
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 50,
+			['Smoothing'] = 350,
 			['Easing'] = {
 				['Style'] = 'Linear',
 				['Formula'] = function(d, s)
@@ -132,9 +133,9 @@ getgenv().Script = {
 			},
 		},
 		['Randomization'] = {
-			['X'] = 0.7,
-			['Y'] = 0.7,
-			['Z'] = 0.7,
+			['X'] = 0,
+			['Y'] = 0,
+			['Z'] = 0,
 		},
 		['Unlock Conditions'] = {
 			['Shift Lock'] = false,
@@ -142,6 +143,7 @@ getgenv().Script = {
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
 			['Wall Check'] = false,
+			['FOV Check'] = false,
 			['Visible'] = false,
 		},
 	},
@@ -174,7 +176,7 @@ getgenv().Script = {
 			['Logger'] = true --[[ Print information ]]--
 		},
 		['Location Assist'] = {
-			['Visible'] = false,
+			['Visible'] = true,
 			['Thickness'] = 1,
 			['Color'] = Color3.fromRGB(199, 166, 163),
 			['Unsafe Color'] = Color3.fromRGB(255, 0, 0),
@@ -220,7 +222,7 @@ getgenv().Script = {
 					['Color Keypoint'] = Color3.fromRGB(202, 219, 247), 
 				},
 				['Boxes'] = {
-					['Enabled'] = true,
+					['Enabled'] = false,
 					['Box Type'] = 'Bounding Box', -- Corner, Bounding Box
 					['Bounding Box'] = {
 						['Animate'] = true,
@@ -284,7 +286,7 @@ getgenv().Script = {
 			['Transparency'] = 0.7,
 		},
 		['Crosshair'] = {
-			['Visible'] = true,
+			['Visible'] = false,
 			['Stutter'] = 0,
 			['Docked'] = false,
 			['Width'] = 1.5,
@@ -307,20 +309,26 @@ getgenv().Script = {
 				},
 				['Extension'] = { 
 					['Visible'] = true,
-					['Text'] = '.soft',
+					['Text'] = '.space',
 					['Color'] = Color3.fromRGB(180, 207, 227)
 				},
 				['Current Target'] = {
-					['Visible'] = true,
+					['Visible'] = false,
 					['Color'] = Color3.fromRGB(255, 255, 255),
 				},
 				['Current Target Health'] = {
-					['Visible'] = true,
+					['Visible'] = false,
 					['Color'] = Color3.fromRGB(165, 255, 191),
 				}
 			}
 		},
 		['Visualization'] = {
+			['Assist'] = {
+				['Visible'] = false,
+				['Filled'] = true,
+				['Transparency'] = 0.4,
+				['Color'] = Color3.fromRGB(221, 130, 240),
+			},
 			['Silent'] = {
 				['BoxFOV'] = {
 					['Visible'] = false,
@@ -330,8 +338,8 @@ getgenv().Script = {
 					['Transparency'] = 1,
 				},
 				['CircleFOV'] = {
-					['Visible'] = true,
-					['Filled'] = true,
+					['Visible'] = false,
+					['Filled'] = false,
 					['Transparency'] = 0.4,
 					['Color'] = Color3.fromRGB(221, 130, 240),
 				},
@@ -353,7 +361,7 @@ getgenv().Script = {
 		},
 	},
 	['Misc'] = {
-		['RemoveSeats'] = false,
+		['RemoveSeats'] = true,
 		['AntiFling'] = false,
 		['AntiLock'] = {
 			['Enabled'] = false,
@@ -394,7 +402,7 @@ getgenv().Script = {
 				['Width'] = 1.2,
 			},
 			['CircleFOV'] = { --[[ Short, Medium, Long ]]--
-				['Revolver'] = { 100, 100, 100 },
+				['Revolver'] = { 32, 32, 32 },
 				['DoubleBarrel'] = { 75, 75, 75 },
 				['Shotgun'] = { 75, 75, 75 },
 				['TacticalShotgun'] = { 75, 75, 75 },

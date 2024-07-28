@@ -1,3 +1,54 @@
+--[[
+	nemesis softworks - universal closet cheat
+
+	-------------------------------------------
+	🟢 Fully Operational
+	🟡 Coming Very Soon
+	🔴 Not Yet Available
+	🟣 Supported by Nemesis's Native Universal Handler
+	
+	Copy Support (26)
+	
+	🟢 Da Hood
+	🟢 Da Strike
+	🟢 Da Fights
+	🟢 Da Uphill
+	🟢 Da Customs
+	🟢 Da Downhill
+	🟢 Dah Hood 1
+	🟢 Dah Hood 2
+	🟢 Hood Modded
+	🟢 Hood Custom
+	🟢 Custom Lock
+	🟢 Custom FFA
+	🟢 OG Da Hood
+	🟢 Flame Hood
+	🟢 Yeno Hood
+	🟢 Bell Hood
+	🟢 New Hood
+	🟢 1v1 Hood
+	🟢 Del Hood
+	🟢 Dee Hood
+	🟡 Der Hood
+	🟢 Ar Hood
+	🟢 Hood Z
+	🟢 Hood Spirit FFA
+	🟡 Dah Aim Trainer
+	🟢 The Hood Customs
+	
+	
+	Universal Support (6)
+	
+	🟡 Phantom Forces
+	🟣 Counter Blox
+	🟣 Criminality
+	🟣 Chaos Town
+	🟣 Fortblox
+	🟣 Rivals
+	🟣 Jailbird
+	🟣 Any Non Custom Model Game
+]]
+
 getgenv().Script = {
 	['Core'] = {
 		['Key'] = '',
@@ -52,10 +103,10 @@ getgenv().Script = {
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
 		['HitChance'] = {
 			['HitChance'] = 100,
-			['Miss Chance'] = 0, -- 10%
+			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
-		['Prediction'] = 0.129,
-		['Draw Hit'] = true, 
+		['Prediction'] = 0.135,
+		['Draw Hit'] = false, 
 		['Auto Prediction'] = false,
 		['Prediction Adjustment'] = 1,
 		['Hit Location'] = {
@@ -96,11 +147,11 @@ getgenv().Script = {
 		['Legacy Smoothing'] = true, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
 			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
-			['R15'] = {'Head'}
+			['R15'] = {'Head', 'HumanoidRootPart'} 
 		},
 		['HitChance'] = {
 			['HitChance'] = 100,
-			['Miss Chance'] = 0,
+			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
 		['Prediction Points'] = { --[[ Will set your prediction depending on the part your aiming nearest to ]]--
 			['Enabled'] = false,
@@ -124,27 +175,27 @@ getgenv().Script = {
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 350,
+			['Smoothing'] = 100,
 			['Easing'] = {
-				['Style'] = 'Linear',
+				['Style'] = 'Expo',
 				['Formula'] = function(d, s)
 					return(d / s^s) - tick()
 				end,
 			},
 		},
 		['Randomization'] = {
-			['X'] = 0,
-			['Y'] = 0,
-			['Z'] = 0,
+			['X'] = 1,
+			['Y'] = 1,
+			['Z'] = 1,
 		},
 		['Unlock Conditions'] = {
 			['Shift Lock'] = false,
 			['Third Person'] = false,
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
-			['Wall Check'] = false,
-			['FOV Check'] = false,
-			['Visible'] = false,
+			['Wall Check'] = true,
+			['FOV Check'] = true,
+			['Visible'] = true,
 		},
 	},
 	['Triggerbot'] = {
@@ -164,7 +215,7 @@ getgenv().Script = {
 	['Helpers'] = {
 		['DisableYAxis'] = false,
 		['Bullet Curvation'] = {	
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Formula'] = '3D', --[[ 3D, 2D ]]--
 			['2D'] = {
 				['X'] = 300,
@@ -176,7 +227,7 @@ getgenv().Script = {
 			['Logger'] = true --[[ Print information ]]--
 		},
 		['Location Assist'] = {
-			['Visible'] = true,
+			['Visible'] = false,
 			['Thickness'] = 1,
 			['Color'] = Color3.fromRGB(199, 166, 163),
 			['Unsafe Color'] = Color3.fromRGB(255, 0, 0),
@@ -193,7 +244,7 @@ getgenv().Script = {
 	['Visuals'] = {
 		['Load Check'] = false, --[[ Hide visuals on start ]]--
 		['Global ESP'] = {
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Team Check'] = true,
 			['Max Draw Distance'] = math.huge,
 			['Text Size'] = 10,
@@ -222,7 +273,7 @@ getgenv().Script = {
 					['Color Keypoint'] = Color3.fromRGB(202, 219, 247), 
 				},
 				['Boxes'] = {
-					['Enabled'] = false,
+					['Enabled'] = true,
 					['Box Type'] = 'Bounding Box', -- Corner, Bounding Box
 					['Bounding Box'] = {
 						['Animate'] = true,
@@ -245,7 +296,7 @@ getgenv().Script = {
 				},
 			},
 		},
-		['Specific ESP'] = {
+		['Specific ESP'] = { --[[ Raid Awareness ]]
 			['Visible'] = false,
 			['EnemyColor'] = Color3.fromRGB(202, 219, 247),
 			['AllyColor'] = Color3.fromRGB(32, 209, 29),
@@ -285,7 +336,7 @@ getgenv().Script = {
 			['Color'] = Color3.fromRGB(255, 255, 255),
 			['Transparency'] = 0.7,
 		},
-		['Crosshair'] = {
+		['Crosshair'] = { --[[ Some text positions are currently messed up ]]
 			['Visible'] = false,
 			['Stutter'] = 0,
 			['Docked'] = false,
@@ -338,8 +389,8 @@ getgenv().Script = {
 					['Transparency'] = 1,
 				},
 				['CircleFOV'] = {
-					['Visible'] = false,
-					['Filled'] = false,
+					['Visible'] = true,
+					['Filled'] = true,
 					['Transparency'] = 0.4,
 					['Color'] = Color3.fromRGB(221, 130, 240),
 				},
@@ -361,7 +412,7 @@ getgenv().Script = {
 		},
 	},
 	['Misc'] = {
-		['RemoveSeats'] = true,
+		['RemoveSeats'] = false,
 		['AntiFling'] = false,
 		['AntiLock'] = {
 			['Enabled'] = false,
@@ -372,7 +423,7 @@ getgenv().Script = {
 			['Gun Macro'] = {
 				['Mode'] = 'Hold',
 				['Type'] = 'ThirdPerson', --[[ ThirdPerson, FirstPerson ]]--
-				['MacroAbuseBypass'] = true,
+				['MacroAbuseBypass'] = true, --[[ Not working with wave / solara ]]
 			},
 			['NoClip Macro'] = {
 				['Enabled'] = false,
@@ -402,7 +453,7 @@ getgenv().Script = {
 				['Width'] = 1.2,
 			},
 			['CircleFOV'] = { --[[ Short, Medium, Long ]]--
-				['Revolver'] = { 32, 32, 32 },
+				['Revolver'] = { 100, 100, 100 },
 				['DoubleBarrel'] = { 75, 75, 75 },
 				['Shotgun'] = { 75, 75, 75 },
 				['TacticalShotgun'] = { 75, 75, 75 },

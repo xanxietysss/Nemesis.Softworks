@@ -100,7 +100,7 @@ getgenv().Script = {
 		['Enabled'] = true,
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
 		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
-		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
+		['FOVType'] = 'BoxFOV', --[[ BoxFOV / CircleFOV ]]--
 		['HitChance'] = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]

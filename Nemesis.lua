@@ -37,7 +37,7 @@
 	🟢 The Hood Customs
 	
 	
-	Universal Support (6)
+	Universal Support (7)
 	
 	🟡 Phantom Forces
 	🟣 Counter Blox
@@ -69,11 +69,11 @@ getgenv().Script = {
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'T',
+		['LockOn'] = 'Q',
 		['Unlock'] = 'Z', --[[ Only works with double bind ]]
 		['AimAssist Toggle'] = 'B',
 		['Silent Toggle'] = 'P',
-		['Triggerbot'] = 'Q',
+		['Triggerbot'] = 'MouseButton2',
 		['AntiLock'] = 'Y',
 		['Specific ESP'] = 'T',
 		['Macro'] = 'X',
@@ -101,6 +101,7 @@ getgenv().Script = {
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
 		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
+		['Default FOV'] = 150,
 		['HitChance'] = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
@@ -200,6 +201,7 @@ getgenv().Script = {
 	},
 	['Triggerbot'] = {
 		['Enabled'] = false,
+		['Default FOV'] = 10,
 		['Interval'] = 1,
 		['Tolerance'] = 0.5,
 		['Cooldown 1'] = 0.1275,
@@ -207,8 +209,8 @@ getgenv().Script = {
 		['Prediction'] = 0.06,
 		['FOVType'] = 'CircleFOV',
 		['Activation'] = {
-			['Mode'] = 'Keybind', --[[ Mouse / Keybind ]]--
-			['Type'] = 'Toggle', --[[ Toggle / Hold ]]--
+			['Mode'] = 'Mouse', --[[ Mouse / Keybind ]]--
+			['Type'] = 'Hold', --[[ Toggle / Hold ]]--
 		},
 		['Silent Link'] = false, --[[ Adjusts the triggerbot depending on Silent Aim ]]--
 	},
@@ -375,7 +377,7 @@ getgenv().Script = {
 		},
 		['Visualization'] = {
 			['Assist'] = {
-				['Visible'] = false,
+				['Visible'] = true,
 				['Filled'] = true,
 				['Transparency'] = 0.4,
 				['Color'] = Color3.fromRGB(221, 130, 240),
@@ -446,6 +448,7 @@ getgenv().Script = {
 		['Long'] = math.huge,
 	},
 	['FOVs'] = {
+		['GunFOV'] = false,
 		['Silent'] = {
 			['BoxFOV'] = {
 				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--

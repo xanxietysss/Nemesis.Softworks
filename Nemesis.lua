@@ -37,7 +37,7 @@
 	🟢 The Hood Customs
 	
 	
-	Universal Support (7)
+	Universal Support (6)
 	
 	🟡 Phantom Forces
 	🟣 Counter Blox
@@ -69,11 +69,11 @@ getgenv().Script = {
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'Q',
+		['LockOn'] = 'T',
 		['Unlock'] = 'Z', --[[ Only works with double bind ]]
 		['AimAssist Toggle'] = 'B',
 		['Silent Toggle'] = 'P',
-		['Triggerbot'] = 'MouseButton2',
+		['Triggerbot'] = 'Q',
 		['AntiLock'] = 'Y',
 		['Specific ESP'] = 'T',
 		['Macro'] = 'X',
@@ -101,14 +101,13 @@ getgenv().Script = {
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
 		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
-		['Default FOV'] = 150,
 		['HitChance'] = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
 		['Prediction'] = 0.135,
 		['Draw Hit'] = false, 
-		['Auto Prediction'] = false,
+		['Auto Prediction'] = true,
 		['Prediction Adjustment'] = 1,
 		['Hit Location'] = {
 			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
@@ -201,7 +200,6 @@ getgenv().Script = {
 	},
 	['Triggerbot'] = {
 		['Enabled'] = false,
-		['Default FOV'] = 10,
 		['Interval'] = 1,
 		['Tolerance'] = 0.5,
 		['Cooldown 1'] = 0.1275,
@@ -209,8 +207,8 @@ getgenv().Script = {
 		['Prediction'] = 0.06,
 		['FOVType'] = 'CircleFOV',
 		['Activation'] = {
-			['Mode'] = 'Mouse', --[[ Mouse / Keybind ]]--
-			['Type'] = 'Hold', --[[ Toggle / Hold ]]--
+			['Mode'] = 'Keybind', --[[ Mouse / Keybind ]]--
+			['Type'] = 'Toggle', --[[ Toggle / Hold ]]--
 		},
 		['Silent Link'] = false, --[[ Adjusts the triggerbot depending on Silent Aim ]]--
 	},
@@ -377,7 +375,7 @@ getgenv().Script = {
 		},
 		['Visualization'] = {
 			['Assist'] = {
-				['Visible'] = true,
+				['Visible'] = false,
 				['Filled'] = true,
 				['Transparency'] = 0.4,
 				['Color'] = Color3.fromRGB(221, 130, 240),
@@ -448,7 +446,6 @@ getgenv().Script = {
 		['Long'] = math.huge,
 	},
 	['FOVs'] = {
-		['GunFOV'] = false,
 		['Silent'] = {
 			['BoxFOV'] = {
 				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--

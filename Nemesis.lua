@@ -101,14 +101,14 @@ getgenv().Script = {
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
 		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
-		['Default FOV'] = 150,
+		['Default FOV'] = 70,
 		['HitChance'] = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
 		['Prediction'] = 0.135,
 		['Draw Hit'] = false, 
-		['Auto Prediction'] = false,
+		['Auto Prediction'] = true,
 		['Prediction Adjustment'] = 1,
 		['Hit Location'] = {
 			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
@@ -377,7 +377,7 @@ getgenv().Script = {
 		},
 		['Visualization'] = {
 			['Assist'] = {
-				['Visible'] = true,
+				['Visible'] = false,
 				['Filled'] = true,
 				['Transparency'] = 0.4,
 				['Color'] = Color3.fromRGB(221, 130, 240),
@@ -391,7 +391,7 @@ getgenv().Script = {
 					['Transparency'] = 1,
 				},
 				['CircleFOV'] = {
-					['Visible'] = true,
+					['Visible'] = false,
 					['Filled'] = true,
 					['Transparency'] = 0.4,
 					['Color'] = Color3.fromRGB(221, 130, 240),
